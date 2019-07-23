@@ -1,0 +1,342 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+    	<meta name="author" content="Antoine Dailly">
+        <title>Syntaxe C++</title>
+    </head>
+
+    <body>
+    <h1>Éléments de syntaxe du C++</h1>
+    
+    <p>Cette page s'adresse aux étudiants de L3 de l'ISFA, promotion 2017-2018.
+    <br>
+    Après avoir fait un semestre de Python, vous devez maintenant faire du C++. Cette page contient un résumé des concepts et de la syntaxe abordés en cours.</p>
+    
+    	<h2> Tous les cours avant le 29 mars. </h2>
+    	
+    	<p>Syntaxe de base jusqu'aux tableaux statiques.</p>
+    	
+    		<h3> Point culture </h3>
+    		
+				<p> Python est un langage <em>interprété</em> : un programme appelé un interpréteur lit chaque ligne et les exécute consécutivement.
+				<br>
+				C++ est quant à lui un langage <em>compilé</em> : un programme appelé un compilateur va transformer le code en un fichier exécutable, en langage machine, que l'ordinateur pourra directement exécuter. </p>
+    		
+    		<h3> Syntaxe de base </h3>
+    		
+				<p> Les fichiers de code C++ ont l'extension <em>.cpp</em>. </p>
+				
+				<p> Pour indiquer la fin d'une instruction, au lieu d'aller à la ligne, vous devez mettre un <em>point-virgule</em>.
+				<br>
+				Pour séparer les blocs d'instruction, au lieu de faire des tabulations, vous devez mettre des <em>accolades</em>. </p>
+				
+				<p> Le code C++ doit, afin d'être exécuté, se trouver dans une fonction <em>main</em>. La syntaxe est la suivante :
+				<br> <TT>int main(void) <br> {<br>&nbsp; return 0; <br>}</TT>
+				<br>
+				Le code doit se situer avant le <TT>return</TT>. </p>
+				
+				<p> Contrairement à Python, les variables doivent être <em>déclarées</em> avant d'être utilisées. Ceci est dû au fonctionnement interne du C++, qui va réserver de l'espace mémoire pour les variables en fonction de leur type. La syntaxe est la suivante :
+				<br> <TT>type nom;</TT>
+				<br>
+				Il est également possible d'initialiser les variables dès leur déclaration :
+				<br> <TT>type nom = valeur;</TT> </p>
+				
+				<p> Le C++ a de multiples types de base :
+				<br><TT>int</TT> représente les entiers. Ceux-ci peuvent prendre des valeurs comprises entre -2 147 483 648 et 2 147 483 647. Exemples : <TT>int a=32; a=-8;</TT>
+				<br><TT>unsigned int</TT> représente les entiers positifs. Ceux-ci peuvent prendre des valeurs comprises entre 0 et 4 294 967 295. Exemples : <TT>unsigned int i=0; i=2345190981;</TT>
+				<br><TT>double</TT> représente les nombres réels. Exemples : <TT>double x=0.121; x=43.8990;</TT>
+				<br><TT>char</TT> représente les caractères simples. Exemples : <TT>char c='c'; c='w';</TT> Notons que les caractères sont compris entre <em>apostrophes</em>.
+				<br><TT>bool</TT> représente les booléens. Exemples : <TT>bool b = true; b=false;</TT> Notons que <TT>true</TT> et <TT>false</TT> ne prennent pas de majuscules en C++. </p>
+				
+				<p> Voici un exemple de code C++ effectuant l'addition de deux nombres :
+				<br> <TT>int main(void) <br> {<br>&nbsp;int a,b; <br>&nbsp;a=8; <br>&nbsp;b=10; <br>&nbsp;int c=a+b; <br>&nbsp;return 0; <br> }</TT> </p>
+				
+			<h3> Importation de bibliothèques et chaines de caractères </h3>
+			
+				<p> Afin d'importer des bibliothèques en C++, vous devez placer un <TT>#include&lt;bibliotheque&gt;</TT> tout en haut de votre fichier de code. De nombreuses bibliothèques existent et fournissent des fonctions et structures de données utiles. </p>
+				
+				<p> La première de ces bibliothèques que nous allons utiliser est la bibliothèque <TT>string</TT>, qui permet d'utiliser les chaines de caractères. </p>
+				
+				<p> Une fois que vous avez placé <TT>#include&lt;string&gt;</TT> en haut de votre fichier de code, vous pouvez créer des variables contenant des chaines de caractères. Le type des chaines de caractères en C++ est <TT>std::string</TT> et les chaines de caractères sont, comme en Python, utilisées avec des apostrophes. Par exemple : <br><TT>std::string s = "Hello World !";</TT><br> Notez bien que les types <TT>char</TT> et <TT>std::string</TT> sont complètement différents ! Une variable de type <TT>char</TT> ne peut en effet contenir qu'un seul caractère. </p>
+    		
+			<h3> Lecture et écriture </h3>
+			
+				<p> Pour lire et écrire sur la sortie standard, il nous faut utiliser la bibliothèque <TT>iostream</TT> : placez <TT>#include&lt;iostream&gt;</TT> en haut de votre fichier de code. </p>
+				
+				<p> L'écriture s'effectue à l'aide d'une fonction appelée <TT>std::cout</TT> qui s'utilise avec la syntaxe suivante :
+				<br><TT>std::cout &lt;&lt; sortie;</TT>
+				<br> Par exemple, en reprenant le code précédent, si nous souhaitons afficher la valeur de <TT>c</TT>, nous pouvons écrire :
+				<br> <TT>int main(void) <br> {<br>&nbsp;int a,b; <br>&nbsp;a=8; <br>&nbsp;b=10; <br>&nbsp;int c=a+b; <br>&nbsp;std::cout &lt;&lt; c;<br>&nbsp;return 0; <br> }</TT> </p>
+				
+				<p> Afin d'aller à la ligne, il est possible d'utiliser le caractère <TT>\n</TT>, ou bien d'écrire <TT>std::endl</TT> à la suite d'un <TT>std::cout</TT> :
+				<br> <TT>int main(void) <br> {<br>&nbsp;int a,b; <br>&nbsp;a=8; <br>&nbsp;b=10; <br>&nbsp;int c=a+b; <br>&nbsp;std::cout &lt;&lt; c &lt;&lt; std::endl;<br>&nbsp;return 0; <br> }</TT> </p>
+				
+				<p> Pour lire sur l'entrée standard, nous utilisont une fonction appelée <TT>std::cin</TT> qui s'utilise avec la syntaxe suivante :
+				<br><TT>std::cin &gt;&gt; entrée;</TT>
+				<br> Par exemple, en reprenant le code précédent, si nous souhaitons demander à l'utilisateur les valeurs de <TT>a</TT> et <TT>b</TT>, nous pouvons écrire :
+				<br> <TT>int main(void) <br> {<br>&nbsp;int a,b; <br>&nbsp;std::cin &gt;&gt; a &gt;&gt; b; <br>&nbsp;int c=a+b; <br>&nbsp;std::cout &lt;&lt; c &lt;&lt; std::endl;<br>&nbsp;return 0; <br> }</TT>
+				<br> Assurez-vous toujours que vous avez déclaré les variables avant de lire sur l'entrée standard, et que leur type correspond à ce qui sera lu ! </p>
+				
+				<p> Notez que quand on utilise <TT>std::cin</TT> pour lire des chaines de caractère, on lit la chaine qui s'interrompt <em>à la première espace</em>. Afin de lire toute une ligne, on peut, si <TT>s</TT> est une <TT>std::string</TT>, effectuer <TT>getline(std::cin,s)</TT> afin que toute une ligne soit affectée dans <TT>s</TT>.
+				</p>
+				
+			<h3> Boucles et structures de contrôle </h3>
+			
+				<p> La boucle <TT>for</TT> a la syntaxe suivante :
+				<br> <TT> for(initialisation ; condition ; modification) { instructions } </TT>
+				<br> Cette boucle va effectuer, dans l'ordre : l'instruction <TT>initialisation</TT>, puis tant que la <TT>condition</TT> sera respectée, elle va exécuter <TT>instructions</TT> puis <TT>modification</TT>. Ainsi, afin d'afficher tous les entiers de 0 à 9, on peut effectuer :
+				<br> <TT>int main(void) <br>{<br>&nbsp;for(unsigned int i = 0; i&lt;10; ++i) <br>&nbsp;{ <br>&nbsp;&nbsp;std::cout &lt;&lt; i &lt;&lt; std::endl; <br>&nbsp;} <br>&nbsp;return 0; <br>}</TT> </p>
+				
+				<p> Dans l'exemple précédent, nous avons utilisé l'instruction <TT>++i</TT>. En C++, si <TT>i</TT> est un entier, on a équivalence entre les instructions suivantes :
+				<br> <TT>i=i+1</TT>
+				<br> <TT>i+=1</TT>
+				<br> <TT>i++</TT>
+				<br> <TT>++i</TT>
+				<br> On préférera généralement utiliser l'instruction <TT>++i</TT> pour incrémenter la valeur de <TT>i</TT> (et de même, l'instruction <TT>--i</TT> pour la décrémenter). </p>
+				
+				<p> La boucle <TT>while</TT> a la syntaxe suivante :
+				<br> <TT> while(condition) { instructions } </TT>
+				<br> Cette boucle va exécuter <TT>instructions</TT> tant que la <TT>condition</TT> est respectée. Ainsi, afin d'afficher tous les entiers de 0 à 9, on peut effectuer :
+				<br> <TT>int main(void) <br>{<br>&nbsp;unsigned int i = O;<br>&nbsp;while(i&lt;10) <br>&nbsp;{ <br>&nbsp;&nbsp;std::cout &lt;&lt; i &lt;&lt; std::endl; <br>&nbsp;&nbsp;++i; <br>&nbsp;} <br>&nbsp;return 0; <br>}</TT>
+				</p>
+				
+				<p> Le C++ introduit également une autre type de boucle, la boucle <TT>do while</TT> :
+				<br> <TT> do { instructions } while(condition); </TT>
+				<br> La principale différence entre les boucles <TT>while</TT> et <TT>do while</TT> est que cette dernière sera exécutée au moins une fois avant que <TT>condition</TT> ne soit évaluée.
+				</p>
+				
+				<p> La structure de contrôle <TT>if</TT> a la syntaxe suivante :
+				<br> <TT> if(condition) { instructions } else { instructions } </TT>
+				<br> Notez que le <TT>else</TT> est facultatif, tout comme en Python. Notez également que <TT>elif</TT> n'existe pas en C++.
+				<br> En exemple d'utilisation, affichons tous les nombres pairs entre 0 et 9 :
+				<br> <TT>int main(void) <br>{<br>&nbsp;for(unsigned int i = 0; i&lt;10; ++i) <br>&nbsp;{ <br>&nbsp;&nbsp;if (i%2 == 0) <br>&nbsp;&nbsp;{ <br>&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; i &lt;&lt; std::endl; <br>&nbsp;&nbsp;} <br>&nbsp;} <br>&nbsp;return 0; <br>}</TT>
+				</p>
+				
+				<p> Afin d'éviter d'imbriquer des <TT>if</TT> et des <TT>else</TT> quand on peut avoir de nombreux cas, il existe une structure de contrôle appelée le <TT>switch</TT> qui a la syntaxe suivante :
+				<br> <TT>switch(expression) { <br>&nbsp;case constante1: <br>&nbsp;&nbsp;instructions1 <br>&nbsp;&nbsp;break; <br>&nbsp;... <br>&nbsp;case constantek: <br>&nbsp;&nbsp;instructionsk <br>&nbsp;&nbsp;break; <br>&nbsp;default: <br>&nbsp;&nbsp;instructions <br>&nbsp;&nbsp;break; </TT>
+				<br> La variable <TT>expression</TT> va être évaluée. Si elle est égale à <TT>constante1</TT>, les <TT>instructions1</TT> seront exécutés, et sinon on vérifie si elle est égale à <TT>constante2</TT>, ..., <TT>constantek</TT>. Le cas <TT>default</TT> correspond au cas où <TT>expression</TT> n'est égale à aucun des <TT>constante1</TT>, ..., <TT>constantek</TT> (il est facultatif). Ainsi, par exemple, si on souhaite afficher des choses différentes en fonction du modulo 4 des nombres entre 0 et 9, on peut faire ainsi :
+				<br> <TT> int main(void) <br>{ <br>&nbsp;for(unsigned int i = 0; i&lt;10; ++i) <br>&nbsp;{ <br>&nbsp;&nbsp;switch(i%4) <br>&nbsp;&nbsp;{ <br>&nbsp;&nbsp;&nbsp;case 0: <br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; "Multiple de 4" &lt;&lt; std::endl; <br>&nbsp;&nbsp;&nbsp;&nbsp;break; <br>&nbsp;&nbsp;&nbsp;case 1: <br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; "4k+1" &lt;&lt; std::endl; <br>&nbsp;&nbsp;&nbsp;&nbsp;break; <br>&nbsp;&nbsp;&nbsp;case 2: <br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; "Pair mais pas multiple de 4" &lt;&lt; std::endl; <br>&nbsp;&nbsp;&nbsp;&nbsp;break; <br>&nbsp;&nbsp;&nbsp;default: <br>&nbsp;&nbsp;&nbsp;&nbsp;std::cout &lt;&lt; "4k+3" &lt;&lt; std::endl; <br>&nbsp;&nbsp;&nbsp;&nbsp;break; <br>&nbsp;&nbsp;} <br>&nbsp;} <br>} </TT>
+				</p>
+				
+			<h3> Fonctions </h3>
+			
+				<p> En C++, on définit les fonctions de la façon suivante :
+				<br> <TT> type_retour nom(type1 arg1, ... , typek argk) { instructions } </TT>
+				<br> La syntaxe est très similaire à celle du Python, à part que le type de chaque argument doit être précisé, et que la fonction doit avoir un type de retour. Vous devez donc faire un <TT>return</TT> d'une variable ou d'une valeur de type <TT>type_retour</TT>. Ainsi, par exemple, une fonction <TT>sum</TT> qui effectue la somme de deux entiers se définit ainsi :
+				<br> <TT> int sum(int a, int b) <br>{ <br>&nbsp;int c = a+b; <br>&nbsp; return c; <br>} </TT>
+				</p>
+				
+				<p> Notez qu'une fonction peut ne <em>rien</em> renvoyer, auquel cas on écrira <TT>void</TT> comme type de retour. Le type de retour <TT>void</TT> <em>interdit</em> d'avoir un <TT>return</TT> dans la fonction. Ainsi, par exemple, une fonction <TT>afficher</TT> qui affiche un entier se définit ainsi :
+				<br> <TT> void afficher(int a) <br>{ <br>&nbsp;std::cout &lt;&lt; a &lt;&lt; std::endl; <br>} </TT>
+				</p>
+		
+			<h3> Tableaux unidimensionnels </h3>
+			
+				<p> Les tableaux en C++ sont <em>typés</em>, au même titre que les variables. La syntaxe pour les déclarer est la suivante :
+				<br> <TT> type nom[taille]; </TT>
+				<br> Ceci déclare un tableau de <TT>taille</TT> cases, qui sont indexées de <TT>0</TT> à <TT>taille-1</TT>.
+				<br> Notez que le tableau est <em>déclaré</em>, mais pas <em>initialisé</em>. Vous devez donc le remplir par la suite.
+				<br> Par la suite, on peut utiliser les tableaux comme en Python pour accéder et modifier des éléments :
+				<br> <TT> int main(void) <br>{ <br>&nbsp;int t[3]; <br>&nbsp;t[0]=1; <br>&nbsp;std::cin &gt;&gt; t[1]; <br>&nbsp;t[2]=t[0]-t[1]; <br>} </TT>
+				</p>
+			
+				<p> Il existe un moyen d'initialiser le tableau dès la déclaration :
+				<br> <TT> type nom[taille] = { elt1, elt2, ..., elttaille }; </TT>
+				<br> Cette syntaxe est utile pour initialiser des tableaux de petite taille. Une boucle <TT>for</TT> est souvent plus utile.
+				</p>
+				
+			<h3> Tableaux multidimensionnels </h3>
+			
+				<p> On peut définir des tableaux à deux dimensions :
+				<br> <TT> type nom[taille1][taille2]; </TT>
+				<br> Bien entendu, on peut définir des tableaux avec autant de dimensions qu'on le souhaite.
+				</p>
+				
+		<h2> Cours du 29 mars </h2>
+		
+		<p> Structures de données, pointeurs et allocation dynamique. </p>
+		
+			<h3> Le mot-clef <TT>struct</TT> </h3>
+			
+				<p> Parfois, on souhaite rassembler plusieurs données dans une seule structure. Pour cela, on utilise le mot-clef <TT>struct</TT> :
+				<br> <TT> struct nom <br>{ <br>&nbsp;type1 champ1; <br>&nbsp;... <br>&nbsp;typen champn; <br>}; </TT>
+				<br> Par la suite, on pourra utiliser <TT>nom</TT> comme n'importe quel type.
+				<br> On peut utiliser n'importe quels types dans la structure. Ainsi, par exemple, on peut définir une structure <TT>etudiant</TT> de la façon suivante :
+				<br> <TT> struct etudiant <br>{ <br>&nbsp;std::string nom; <br>&nbsp;int numero; <br>&nbsp;int notes[5]; <br>}; </TT>
+				<br> Cette structure crée donc un nouveau type <TT>etudiant</TT> qui rassemble trois données : le nom (représenté par une chaine de caractères), le numéro (représenté par un entier) et les notes (représentées par un tableau de cinq entiers).
+				</p>
+				
+			<h3> Utilisation de la structure </h3>
+			
+				<p> Une fois la structure définie, on peut l'utiliser comme un type standard. Par exemple, on peut déclarer :
+				<br> <TT> etudiant e; </TT>
+				<br> On accède aux champs de la façon suivante :
+				<br> <TT> e.nom = "Dailly"; <br> std::cin &gt;&gt; e.numero; </TT>
+				<br> Afin d'initialiser la structure, on peut soit remplir les champs comme montré précédemment, soit faire ainsi :
+				<br> <TT> etudiant e = {"Dailly",12345678,{10,10,10,10,10}}; </TT>
+				<br> La syntaxe est donc la même que pour initialiser un tableau.
+				<br> Les structures peuvent être utilisées comme des types quelconques ; on peut créer des tableaux de nos types structurés, et les utiliser comme type de retour ou de paramètre de fonctions. Par exemple, une fonction d'initialisation ressemblerait à :
+				<br> <TT> etudiant creer(void) <br>{ <br>&nbsp;etudiant e; <br>&nbsp;std::cin &gt;&gt; e.nom &gt;&gt; e.numero; <br>&nbsp;e.notes = {10,10,10,10,10}; <br>&nbsp;return e; <br>} </TT>
+				<br> Tandis qu'une fonction d'affichage serait :
+				<br> <TT> void affiche(etudiant e) { <br>&nbsp;std::cout &lt;&lt; "L'étudiant s'appelle " &lt;&lt; e.nom << " et a pour numéro " &lt;&lt; e.numero &lt;&lt; ". Ses notes ce semestre sont :" &lt;&lt; std::endl; <br>&nbsp;for(unsigned int i = 0; i < 5; ++i) <br>&nbsp;{ <br>&nbsp;&nbsp; std::cout &lt;&lt; e.notes[i] &lt;&lt; std::endl; <br>&nbsp;} <br>} </TT>
+				<br> Et une fonction modifiant une note de l'étudiant serait :
+				<br> <TT> etudiant modifierNote(etudiant e, int i, int nouvelleNote) <br>{ <br>&nbsp;e.notes[i] = nouvelleNote; <br>&nbsp;return e; <br>} </TT>
+				</p>
+    	
+    	<p>Pointeurs, allocation dynamique.</p>
+    	
+    		<h3> Adresse </h3>
+    		
+    			<p> Lorsque l'on déclare une variable, elle est créée dans la mémoire à une case spécifique, appelée <em>adresse</em>. Pour accéder à l'adresse d'une variable <TT>a</TT>, on utilise la syntaxe <TT>&#38;a</TT>. Exemple d'utilisation :
+    			<br> <TT> int a; <br> std::cout &lt;&lt; &#38;a &lt;&lt; std::endl; </TT> </p>
+    			
+			<h3> Pointeurs : principe </h3>
+			
+				<p> Les pointeurs sont des types de données spécifiques servant à contenir l'adresse de variables. De façon moins formelle, les pointeurs sont des variables qui permettent d'avoir un accès mémoire direct à d'autres variables. </p>
+				<p> Pourquoi utiliser les pointeurs ? Exemple pratique, si l'on souhaite échanger la valeur de deux variables entières <TT>a</TT> et <TT>b</TT>, le code est le suivant :
+				<br> <TT> int tmp = b; <br> b = a; <br> a = tmp; </TT>
+				<br> Cependant, si cet échange de valeur est fréquent dans le code, on voudra éviter de le recopier à chaque fois. Pour cela, on va créer une fonction <TT>echange</TT> qui effectuera cet échange, et que l'on appellera à chaque fois que nécessaire. Seulement, si l'on déclare la fonction de cette façon :
+				<br> <TT> void echange(int a, int b) <br> { <br>&nbsp;&nbsp; int tmp = b; <br>&nbsp;&nbsp; b = a; <br>&nbsp;&nbsp; a = tmp; <br>} </TT>
+				<br> Et que l'on appelle la fonction sur deux variables en effectuant <TT>echange(a,b)</TT>, leurs valeurs ne seront pas changées ! En effet, lorsque l'on entre dans une fonction, les paramètres sont <em>copiés</em> en mémoire, la fonction travaille sur ces copies, puis les détruit lorsqu'elle se termine. Afin de modifier directement les variables originales, il faut donc connaître leur position dans la mémoire. C'est exactement ce que nous permettent de faire les adresses !
+				<br> À partir de là, on peut définir un pointeur comme une variable contenant une adresse. </p>
+				
+			<h3> Pointeurs : syntaxe </h3>
+			
+				<p> Si on déclare la variable suivante :
+				<br> <TT> type a; </TT>
+				<br> On déclare un pointeur <em>pointant</em> sur cette variable de la façon suivante :
+				<br> <TT> type *ptr = &#38;a; </TT>
+				<br> Par la suite, on peut soit modifier le pointeur (pour qu'il pointe vers une variable différente du même type par exemple), soit modifier la variable pointée de la façon suivante :
+				<br> <TT> *ptr = valeur; </TT>
+				<br> Cette opération s'appelle le <em>déréférencement</em> : le programme va lire le contenu de la variable <TT>ptr</TT>, se rendre à l'adresse indiquée, et modifier la mémoire à ladite adresse. </p>
+				
+				<p> Exemple concret avec l'échange vu plus haut :
+				<br> <TT> void echange (int *ptr1, int *ptr2) <br>{ <br>&nbsp;&nbsp; int tmp = *ptr2; <br>&nbsp;&nbsp; *ptr2 = *ptr1; <br>&nbsp;&nbsp; *ptr1 = tmp; <br> } </TT>
+				<br> Cette fonction effectue donc les opérations suivantes :
+				<br> &nbsp;&nbsp;1- Placer la valeur contenue dans la case pointée par <TT>ptr2</TT> dans une variable <TT>tmp</TT> de type entier ;
+				<br> &nbsp;&nbsp;2- Placer la valeur contenue dans la case pointée par <TT>ptr1</TT> dans la case pointée par <TT>ptr2</TT> ;
+				<br> &nbsp;&nbsp;3- Placer la valeur contenue dans la variable <TT>tmp</TT> dans la case pointée par <TT>ptr1</TT>.
+				<br> Si l'on appelle la fonction <TT>echange(&#38;a,&#38;b)</TT>, on va donc effectivement modifier les valeurs de <TT>a</TT> et de <TT>b</TT> grâce à l'accès mémoire.
+				</p>
+				
+				<p> Pour initialiser un pointeur, on peut utiliser le mot-clef <TT>NULL</TT>. Ainsi, la ligne : <br><TT>type *ptr = NULL;</TT> <br>déclare un pointeur ne pointant nulle part. Cela permet d'éviter les erreurs mémoire en testant, avant d'utiliser le pointeur, s'il est égal à <TT>NULL</TT>.
+				
+				<p> Les pointeurs sont l'une des notions les plus complexes de la programmation, mais également l'une des plus puissantes. N'hésitez pas à dessiner votre mémoire pour bien comprendre ce qui se passe.
+				<br> Si vous êtes intéressés, il existe une arithmétique des pointeurs. Cependant, n'allez explorer cette notion que si vous êtes déjà bien à l'aise avec les pointeurs. </p>
+				
+			<h3> Pointeurs : intérêt pour l'économie de mémoire </h3>
+			
+				<p> Dans le cours précédent, nous avions une structure <TT>etudiant</TT> composée de multiples types de données. Lorsque l'on appelle une fonction qui travaille sur un <TT>etudiant</TT>, on recopie donc la variable dans la mémoire. Si cette copie est effectuée souvent ou sur des structures contenant beaucoup de données, cela va devenir très coûteux. <br> Les pointeurs permettent de s'épargner la copie en mémoire, vu qu'ils permettent d'accéder directement à nos variables dans la mémoire. 
+				<br> Attention cependant, pour accéder à un champ depuis un pointeur sur une structure, on a deux syntaxes équivalentes :
+				<br> <TT> type_structure x; <br> type_structure *ptr = &#38;x; <br> (*ptr).champ = valeur; <br> ptr-&gt;champ = valeur; </TT>
+				<br> Ainsi, pour réécrire la fonction de modification de notes de façon à ne pas recopier inutilement des données en mémoire, on peut procéder ainsi :
+				<br> <TT> void modifierNote(etudiant *ptr, int i, int nouvelleNote) <br>{ <br>&nbsp;e-&gt;notes[i] = nouvelleNote; <br>} </TT> </p>
+				
+			<h3> Taille des types en mémoire </h3>
+			
+				<p> Quand est-il intéressant d'utiliser un pointeur plutôt que de recopier en mémoire ? Dans deux cas :
+				<br> &nbsp;&nbsp;1- Quand on a besoin de l'accès mémoire direct (cas de la fonction <TT>echange</TT> développé ci-dessus) ;
+				<br> &nbsp;&nbsp;2- Quand ce que l'on recopie prend plus d'espace mémoire qu'un pointeur.
+				<br> Afin de connaître l'espace mémoire occupé par une variable d'un certain type, C++ dispose d'une fonction nommée <TT>sizeof</TT>. On l'utilise de la façon suivante :
+				<br> <TT> std::cout &lt;&lt; sizeof(type) &lt;&lt; std::endl; </TT>
+				<br> La fonction <TT>sizeof</TT> prend donc en paramètre un type de données (prédéfini comme <TT>int</TT> ou <TT>std::string</TT>, mais aussi les types structurés que vous pouvez créer), et renvoie un entier qui est le nombre d'octets que prendra une valeur dudit type.
+				<br> Ainsi, un <TT>int</TT> occupe 4 octets, un <TT>double</TT> en occupe 8, une <TT>std::string</TT> en occupe au moins 32, et un pointeur quelconque en occupe 8. </p>
+				
+			<h3> Allocation dynamique </h3>
+			
+				<p> En C, l'ancêtre du C++, il était impossible de définir des tableaux de taille non fixe (c'est encore le cas selon le compilateur C++). Pour contourner ceci a été créée l'<em>allocation dynamique</em>, qui consiste à réserver un espace mémoire, ce qui équivaut à créer un tableau.
+				<br> La syntaxe pour réserver l'équivalent d'un tableau de <TT>taille</TT> éléments est la suivante :
+				<br> <TT> type *t = (type*)malloc(taille*sizeof(type)); </TT>
+				<br> Derrière son apparence barbare, cette ligne est en fait très simple : <TT>malloc</TT> est une fonction permettant de réserver directement de l'espace mémoire, elle prend en paramètre la taille de l'espace nécessaire (qui est donc <TT>taille</TT> fois l'espace mémoire occupé par une variable du type souhaité). Comme <TT>malloc</TT> renvoie un pointeur générique, il faut convertir l'adresse renvoyée dans le bon type de pointeur.
+				<br> Notez que <TT>malloc</TT> est censé renvoyer <TT>NULL</TT> si l'allocation a échoué.
+				</p>
+				
+				<p> Par la suite, la zone mémoire ainsi définie peut s'utiliser comme un tableau : on accède au <TT>i</TT>ème élément de <TT>t</TT> en écrivant <TT>t[i]</TT>. Simplement, on peut utiliser <TT>t</TT> comme un pointeur, ce qui simplifie la syntaxe des fonctions. Ainsi, pour calculer la somme des éléments de <TT>t</TT> tableau de <TT>taille</TT> entiers, on peut définir la fonction suivante :
+				<br> <TT> int sommeTableau (int *t, int taille) <br>{ <br>&nbsp;&nbsp;int res = 0; <br>&nbsp;&nbsp;if (t != NULL) <br>&nbsp;&nbsp;{ <br>&nbsp;&nbsp;&nbsp;&nbsp;for (unsigned int = 0; i &lt; taille; ++i) <br>&nbsp;&nbsp;&nbsp;&nbsp;{ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; res+=t[i]; <br>&nbsp;&nbsp;&nbsp;&nbsp;} <br>&nbsp;&nbsp;} <br>&nbsp;&nbsp;return res; <br>} </TT>
+				</p>
+				
+				<p> Notez que l'on peut ainsi créer des tableaux de n'importe quel type... y compris des tableaux de tableaux. Par exemple, pour allouer dynamiquement une matrice d'entiers de <TT>m</TT> lignes et <TT>n</TT> colonnes, on effectue le code suivant :
+				<br> <TT> int **mat = (int**)malloc(m*sizeof(int*)); <br>if (mat != NULL) <br>{ <br>&nbsp;&nbsp;for (unsigned int i = 0; i &lt; m; ++i) <br>&nbsp;&nbsp;{ <br>&nbsp;&nbsp;&nbsp;&nbsp;mat[i]=(int*)malloc(n*sizeof(int)); <br>&nbsp;&nbsp;} <br>} </TT>
+				<br> On accède alors à une case comme pour une matrice classique : <TT>mat[i][j]</TT>.
+				</p>
+				
+				<p> <b>Toute mémoire allouée explicitement doit être désallouée explicitement.</b> C'est l'un des principes les plus importants du langage C++. En pratique, cela peut se traduire par <em>Tout <TT>malloc</TT> doit être <TT>free</TT>.</em>
+				<br> Afin de désallouer une zone mémoire <TT>t</TT> allouée via <TT>malloc</TT>, on utilise simplement la ligne suivante :
+				<br> <TT>free(t);</TT>
+				</p>
+				
+				<p> Si on a utilisé l'allocation dynamique pour créer une matrice, on doit désallouer chacune de ses lignes avant de la désallouer elle-même. En pratique, cela donne le code suivant (en reprenant les mêmes notations que ci-dessus) :
+				<br> <TT> for (unsigned int i = 0; i &lt; m; ++i) <br>{ <br>&nbsp;&nbsp;free(mat[i]); <br>} <br>free(mat);</TT>
+				</p>
+			<!--	
+		<h2> Septième cours (8 mars) </h2>
+		
+		<p> La STL, les conteneurs, les itérateurs. </p>
+		
+			<h3> La STL </h3>
+			
+				<p> La STL (pour <em>Standard Library</em>, ou <em>Bibliothèque Standard</em>) est un ensemble de modules contenant des structures de données et des fonctions utilitaires pour C++.
+				<br> Nous utilisons la STL depuis le début du cours : la bibliothèque <TT>iostream</TT> est un module de la STL.
+				</p>
+				
+				<p> Voici deux sites qui contiennent de nombreuses informations sur la STL :
+				<br> <a href="http://en.cppreference.com/w/cpp">CPPreference</a>
+				<br> <a href="http://www.cplusplus.com/reference/">CPlusPlus.com</a>
+				<br> Si vous cherchez des fonctions particulières, un type de données adapté à votre problème, ou bien que vous avez oublié la syntaxe dont vous avez besoin, n'hésitez surtout pas à vous en servir.
+				</p>
+				
+				<p> Cette page ne détaillera pas l'intégralité de la STL, et se contentera de vous donner quelques pistes d'exploration.
+				<br> Une fois que vous aurez accès aux outils de la STL, vous aurez une immense versatilité pour répondre aux problèmes auxquels vous faites face. Il deviendra donc critique, pour vous, lorsque vous préparerez un algorithme répondant à un problème donné, de vous poser la question de la structure la plus adaptée pour l'implémenter. Ainsi, vous aurez intérêt à utiliser des structures semblables aux listes de Python si vous devez faire des opérations dessus (calcul de longueur, ajout/suppression d'élément...), tandis qu'il sera plus intéressant d'utiliser des tableaux statiques si vous devez simplement stocker un nombre connu de données.
+				</p>
+				
+			<h3> Les chaines de caractères </h3>
+			
+				<p> La bibliothèque <TT>string</TT> que nous utilisons depuis le début sert à travailler de façon assez pointue sur des chaines de caractère.
+				<br> Techniquement, on peut voir un <TT>std::string</TT> comme un tableau dynamique de <TT>char</TT>.
+				<br> Vous trouverez <a href="Cours/Prog/string.cpp">ici</a> un fichier de code décrivant certaines utilisations de cette structure de données.
+				</p>
+				
+			<h3> Les conteneurs de la STL </h3>
+			
+				<p> Les conteneurs sont des structures servant à contenir des données. Il en existe plusieurs, ayant chacun leur intérêt algorithmique. Ici, nous présenterons surtout deux d'entre eux (<TT>vector</TT> et <TT>map</TT>), mais selon les cas il peut être intéressant d'utiliser des conteneurs adaptés à des données particulières.
+				</p>
+				
+				<p> Un <TT>vector</TT> est un tableau dynamique. Il s'agit de l'équivalent des listes de Python.
+				<br> Afin d'utiliser <TT>vector</TT>, il faut ajouter <TT>#include&lt;vector&gt;</TT> en haut de son fichier. Par la suite, on déclare un <TT>vector</TT> de la façon suivante :
+				<br> <TT>std::vector&lt;type&gt; nom; </TT>
+				<br> Vous trouverez <a href="Cours/Prog/vector.cpp">ici</a> un fichier de code décrivant certaines fonctionnalités des <TT>vector</TT>.
+				</p>
+				
+				<p> Une <TT>map</TT> est l'équivalent des dictionnaires de Python : un tableau indexé par autre chose que des entiers de 0 à n-1.
+				<br> Plus formellement, une <TT>map</TT> est un ensemble de paires (clef,valeur) où toutes les clefs sont uniques.
+				<br> Vous trouverez <a href="Cours/Prog/map.cpp">ici</a> un fichier de code décrivant certaines fonctionnalités des <TT>map</TT>.
+				</p>
+				
+			<h3> Les itérateurs </h3>
+			
+				<p> Avec les <TT>map</TT> se pose une question : comment parcourir une structure de données qui n'est pas indexée par des entiers de 0 à n-1 ? En C++ ont été définis des types particuliers de pointeurs, appelés <em>itérateurs</em>, afin d'effectuer des parcours de structure.
+				<br> Si on définit la structure suivante :
+				<br> <TT> std::map&lt;std::string,int&gt; m; </TT>
+				<br> Un itérateur sur cette structure se définira de la façon suivante :
+				<br> <TT> std::map&lt;std::string,int&gt;::iterator it; </TT>
+				<br> Une structure possède deux valeurs particulières pour les itérateurs : <TT>begin()</TT> (qui pointe sur le <em>début</em> de la structure) et <TT>end()</TT> (qui pointe <em>après la fin</em> de la structure). Ainsi, un parcours de la structure s'écrira de la façon suivante :
+				<br> <TT> for (std::map&lt;std::string,int&gt;::iterator it = m.begin() ; it != m.end() ; ++it)</TT>
+				<br> Par la suite, comme pour les pointeurs, on accédera à l'élément de la structure pointé par l'itérateur avec l'opérateur de déréférencement. Voyez le fichier de code sur les <TT>map</TT> pour des exemples pratiques.
+				</p>
+				
+			<h3> La bibliothèque <TT>algorithm</TT> </h3>
+			
+				<p> La bibliothèque <TT>algorithm</TT> (utilisable en ajoutant la ligne <TT>#include&lt;algorithm&gt;</TT> en haut de votre fichier) contient un ensemble de fonctions prédéfinies permettant notamment de manipuler des structures de données. On a ainsi accès à des fonctions de tri, d'inversion, de mélange aléatoire...
+				<br> Les algorithmes de cette bibliothèque fonctionnent grâce aux itérateurs, ce qui permet de les rendre génériques pour toutes les structures de données.
+				<br> Vous trouverez <a href="Cours/Prog/algorithm.cpp">ici</a> un fichier de code décrivant plusieurs fonctions de la bibliothèque <TT>algorithm</TT>. Notez toujours l'utilisation d'itérateurs afin de les appeler.
+				</p>
+				
+			<h3> Conclusion </h3>
+			
+				<p> Vous avez maintenant à votre disposition de très nombreux outils efficaces et puissants pour travailler comme en Python, et même plus efficacement.
+				<br> Comme dit précédemment, interrogez-vous toujours sur la pertinence d'utiliser une certaine structure de données : <TT>vector</TT> ou tableau statique ? Pointeur ou type de base ? Algorithme puissant ou simple boucle ? La réponse dépendra du problème et du type de solution que vous mettrez en place.
+				</p>-->
+    
+    </body>
+    
+</html>
