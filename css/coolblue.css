@@ -139,7 +139,7 @@ ul, ol {
 }
 ul { list-style: disc; }
 ol { list-style: decimal; }
-.publis { list-style-type: symbols(cyclic "[J8]" "[J7]" "[J6]" "[J5]" "[J4]" "[J3]" "[J2]" "[J1]"); prefix: "["; }
+.publis { list-style-type: symbols(cyclic "[J9]" "[J8]" "[J7]" "[J6]" "[J5]" "[J4]" "[J3]" "[J2]" "[J1]"); prefix: "["; }
 .confs { list-style-type: symbols(cyclic "[C1]"); prefix: "["; }
 
 dt {
